@@ -3,25 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="nav-bar">
-        <div class="nav-bar-item" id="img-&-nome">
+        <div class="nav-bar-item" id="img-nome">
             <img src="acolá" alt="foto de perfil">
             <h2 class="Meu nome">Samuel Araújo</h2>
         </div>
         <div class="nav-bar-item">
-            <h3>TÍTULO DA PÁGINA</h3>
+            <h1>TÍTULO DA PÁGINA</h1>
         </div>
         <div class="nav-bar-item" id="materias">
             <img src="ali" alt="ícone da matéria {tal}">
-            <select name="materias" id="materias-combo-box">
-                <option value="1"> Essa </option>
-                <option value="2"> Essa outra</option>
-                <option value="3"> Aquela</option>
-            </select>
+            <div class="dropdown">
+                <span id="selected-option">Selecione uma opção</span>
+                <ul class="materias-list">
+                    <li data-value="1">Essa</li>
+                    <li data-value="2">Essa outra</li>
+                    <li data-value="3">Aquela</li>
+                </ul>
+            </div>
         </div>
     </div>
+    <script src="index.js"></script>
 </body>
 </html>
