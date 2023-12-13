@@ -9,7 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     materiasList.addEventListener("click", function (event) {
+        selectedOption.textContent = event.target.textContent;
         if (event.target.tagName == "LI") {
+            // Remove the declaration and assignment of the unused 'selectedValue' variable.
             // const selectedValue = event.target.getAttribute("data-value");
             materiasList.classList.remove("show");
             selectedOption.textContent = event.target.textContent;
