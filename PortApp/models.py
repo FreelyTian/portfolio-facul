@@ -4,7 +4,7 @@ from ckeditor.fields import RichTextField
 # Create your models here.
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    body = RichTextField(blank=True, null=True)
+    body = RichTextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
@@ -20,3 +20,6 @@ class Post(models.Model):
 class Materia(models.Model):
     nome = models.CharField(max_length=255)
     semestreAno = models.CharField(max_length=55)
+    
+    def __str__(self):
+        return f'{self.nome} {self.semestreAno}'
