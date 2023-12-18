@@ -1,30 +1,35 @@
-* {
-    padding: 0;
-    margin: 0;
-}
-
-html * {
-    font-family: Deltarune, sans-serif !important;
-}
-
 body {
     background-color: black;
 }
 
+html {
+    font-family: "Segoe UI",
+    system-ui,
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+}
+
 .content {
     background-color: white;
-    height: 100%;
+    height: 50rem;
     width: 80%;
-    padding-top: 1%;
-    padding-left: 1%;
-    margin-left: 10%;
+    margin-top: 0.1rem;
+    padding: 1%;
+    margin-left: 9%;
+    
 }
 
 #foto-perfil {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
-    margin-top: -0.84%;
+    margin-top: 3%;
     margin-left: 1%;
     margin-bottom: 0.5%;
     vertical-align: middle;
@@ -36,6 +41,10 @@ body {
 }
 
 .nav-bar {
+    padding: 0;
+    margin: 0;
+    height: 6rem;
+    z-index: 5;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -49,14 +58,18 @@ body {
     color: #f2f2f2;
     text-align: center;
     vertical-align: middle;
-    padding: 14px 16px;
+    padding: 1rem 1rem;
     text-decoration: none;
+}
+
+.nav-bar-item h1 {
+    margin-top: 0.4rem;
 }
 
 #img-nome {
     display: flex;
     gap: 10px;
-    margin-top: 0.5%;
+    margin-top: -0.3%;
     flex-direction: row;
 }
 
@@ -79,8 +92,8 @@ body {
     list-style: none;
     margin-left: -0.29%;
     margin-top: 0.6%;
-    border-radius: 0; /* Cantos quadrados */
-    width: 16.3rem; /* Ajuste conforme necessário */
+    border-radius: 0;
+    width: 16.3rem;
     cursor: pointer;
     display: none;
     position: absolute;
@@ -91,8 +104,6 @@ body {
     display: block;
 }
 
-
-
 .materias-list li {
     color: white;
     background-color: #3e3e3e;
@@ -100,8 +111,23 @@ body {
     transition: background-color 0.3s;
 }
 
-
 .materias-list li:hover {
     background-color: #f0f0f0;
     color: black;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1%;
+    margin-top: 1%;
+    overflow: hidden;
+}
+
+footer a {
+    color: white;
 }
