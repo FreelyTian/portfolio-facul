@@ -50,6 +50,7 @@ html {
     justify-content: space-between;
     background-color: #333;
     overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 .nav-bar-item {
@@ -58,12 +59,14 @@ html {
     color: #f2f2f2;
     text-align: center;
     vertical-align: middle;
-    padding: 1rem 1rem;
+    padding: 1rem;
     text-decoration: none;
+    
 }
 
 .nav-bar-item h1 {
     margin-top: 0.4rem;
+    height: auto;
 }
 
 #img-nome {
