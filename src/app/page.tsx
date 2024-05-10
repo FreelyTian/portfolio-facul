@@ -1,10 +1,9 @@
-import Image from "next/image";
-import TipTap from "@/components/editor/editor";
+import { NavBar } from "@/components/nav-bar/NavBar";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <TipTap />
-    </main>
+    <div className="flex min-h-screen flex-col items-center justify-between w-full">
+      <NavBar />
+    </div>
   );
 }
