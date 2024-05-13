@@ -11,7 +11,7 @@ export type Materia = {
   updatedAt: Date;
 };
 
-export const columns: ColumnDef<Materia>[] = [
+export const columnsM: ColumnDef<Materia>[] = [
   {
     accessorKey: "name",
     header: "Name",
@@ -25,3 +25,44 @@ export const columns: ColumnDef<Materia>[] = [
     header: "Atualizada em:",
   },
 ];
+
+export type Post = {
+  id: string;
+  title: string;
+  content: string;
+  published: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export const columnsP: ColumnDef<Post>[] = [
+  {
+    accessorKey: "title",
+    header: "Título",
+  },
+  {
+    accessorKey: "content",
+    header: "Conteúdo",
+    cell: ({ row }) => {
+      const content = String(row.getValue("content"));
+      if (content.length > 20) {
+        return content.slice(0, 20) + "...";
+      } else {
+        return content;
+      }
+    },
+  },
+  {
+    accessorKey: "createdAt",
+    header: "Criado em:",
+  },
+  {
+    accessorKey: "updatedAt",
+    header: "Atualizado em:",
+  },
+  {
+    accessorKey: "published",
+    header: "Publicado?",
+  },
+];
+

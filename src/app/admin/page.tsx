@@ -1,18 +1,12 @@
 import { logButtonClick } from "@/components/buttons/logOut";
 import SideBar from "@/components/sidebar/sidebar";
+import { MainTable } from "@/components/table/main-table";
 import { Button } from "@/components/ui/button";
 import { UserAvatar } from "@/components/user-avatar/UserAvatar";
-import { Materia, columns } from "./columns";
-import { PrismaClient } from "@prisma/client";
+import { useAtom } from "jotai";
+import { titleAtom } from "../../../atoms";
 
-const prisma = new PrismaClient();
-
-export default async function Admin() {
-  async function getData(): Promise<Materia[]> {
-    const data = prisma.materia.findMany();
-    return data;
-  }
-  const data = await getData();
+export default function Admin() {
   return (
     <>
       <div className="w-full flex items-center justify-between h-14 p-2 border-b shadow-sm">
@@ -26,8 +20,8 @@ export default async function Admin() {
         </form>
       </div>
       <div className="flex flex-row w-full min-h-screen">
-          <SideBar columns={columns} data={data} />
-          
+        <SideBar />
+        <MainTable />
       </div>
     </>
   );
