@@ -2,33 +2,54 @@
 import { Button } from "../ui/button";
 import { useAtom } from "jotai";
 import { titleAtom } from "../../../atoms";
+import Link from "next/link";
+import {
+  BookAIcon,
+  BookIcon,
+  FileIcon,
+  FileSpreadsheetIcon,
+} from "lucide-react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../ui/tooltip";
 
 export default function SideBar() {
-  const [texto, setTexto] = useAtom(titleAtom);
-
   return (
-    <div className="w-2/12 gap-2 bg-zinc-100 border-r shadow-sm drop-shadow-md flex flex-col p-2">
-      <Button
-        className="w-full bg-trnasparent hover:bg-black hover:text-white border-stone-300 shadow"
-        variant={"outline"}
-        value={"Matérias"}
-        onClick={(value) => {
-          setTexto("Matérias");
-        }}
-      >
-        Matérias
-      </Button>
-      <Button
-        className="bg-trnasparent hover:bg-black hover:text-white border-stone-300 shadow"
-        variant={"outline"}
-        value={"Posts"}
-        onClick={(value) => {
-          setTexto(value.currentTarget.value);
-        }}
-      >
-        Posts
-      </Button>
-      <h1>{texto}</h1>
+    <div className="w-[70px] gap-3 bg-zinc-50 border-r shadow-sm drop-shadow-md flex flex-col p-2">
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Link
+              className="bg-white flex flex-row justify-center rounded-md h-12 text-center hover:bg-black hover:text-white border-stone-300 shadow-md shadow-zinc-300"
+              href={"/admin/Matérias"}
+            >
+              <BookIcon className="mt-3" />
+            </Link>
+          </TooltipTrigger>
+          <TooltipContent side="right" sideOffset={6}>
+            Matérias
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Link
+              className="bg-white flex flex-row justify-center rounded-md h-12 text-center hover:bg-black hover:text-white border-stone-300 shadow-md shadow-zinc-300"
+              href={"/admin/Posts"}
+            >
+              <FileIcon className="mt-3" />
+            </Link>
+          </TooltipTrigger>
+          <TooltipContent side="right" sideOffset={6} className="bg-white">
+            Posts
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
     </div>
   );
 }
