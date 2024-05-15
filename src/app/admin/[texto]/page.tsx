@@ -2,8 +2,6 @@ import { logButtonClick } from "@/components/buttons/logOut";
 import SideBar from "@/components/sidebar/sidebar";
 import { Button } from "@/components/ui/button";
 import { UserAvatar } from "@/components/user-avatar/UserAvatar";
-import { atom, useAtom, useAtomValue } from "jotai";
-import { titleAtom } from "../../../../atoms";
 import { MyTable } from "@/components/table/table";
 import { getDataM, getDataP } from "@/components/table/dataProvider";
 import { columnsM, columnsP } from "../columns";
@@ -16,14 +14,14 @@ export default async function Admin({ params }: { params: { texto: string } }) {
     <>
       <div className="w-full flex items-center justify-between h-14 p-2 border-b shadow-sm">
         <div>
-          <UserAvatar />
+        <UserAvatar />
         </div>
-        <form action={logButtonClick}>
-          <Button type="submit" variant={"default"} className="p-2">
-            Sign Out
-          </Button>
-        </form>
-      </div>
+          <form action={logButtonClick}>
+            <Button type="submit" variant={"default"} className="p-2">
+              Sign Out
+            </Button>
+          </form>
+        </div>
       <div className="flex flex-row w-full min-h-screen">
         <SideBar />
         <MyTable texto={texto} columns={columns} data={data} />
