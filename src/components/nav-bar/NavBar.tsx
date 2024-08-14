@@ -5,7 +5,7 @@ import { signIn } from "@/auth.ts";
 
 export function NavBar() {
   return (
-    <div className="flex h-10 border w-full items-center flex-row justify-between px-4 md:px-6">
+    <div className="flex h-10 w-full items-center flex-row justify-between px-4 md:px-6">
       <Link className="flex items-center gap-2 text-lg font-semibold" href="#">
         <PowerOffIcon size={24} />
         <span>Myself</span>
