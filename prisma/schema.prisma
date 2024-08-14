@@ -21,6 +21,7 @@ model Materia {
   name      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt @default(now())
+  periodo   String   @default("2022/1")
 
 }
 
