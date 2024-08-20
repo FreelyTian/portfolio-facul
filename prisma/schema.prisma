@@ -11,6 +11,8 @@ model Post {
   id        String  @id @default(cuid())
   title     String
   content   String
+  materiaId   String @map("materiaId")
+  materia     Materia @relation(fields: [materiaId], references: [id])
   published Boolean @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt @default(now())
@@ -22,6 +24,6 @@ model Materia {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt @default(now())
   periodo   String   @default("2022/1")
-
+  posts     Post[]
 }
 
