@@ -4,7 +4,6 @@ import { useState } from "react";
 import parse from "html-react-parser";
 import { Card, CardContent } from "@/components/ui/card";
 import { EditorInstance } from "novel";
-import { defaultValue } from "./defaultValue";
 import Editor from "@/components/editor/noveleditor";
 import { HTMLContent } from "@tiptap/react";
 import { useDebounceCallback } from "usehooks-ts";
@@ -53,7 +52,6 @@ export default function Crud({ params }: { params: { mode: string } }) {
     },
     500
   );
-  console.log(defaultValue);
   switch (params.mode) {
     case "create":
       return (
