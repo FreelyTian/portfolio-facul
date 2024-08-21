@@ -29,6 +29,16 @@ export async function createPost(data: {
   console.log("Post criado");
   revalidatePath("/admin/Posts");
 }
+
+export async function getPost(materiaID: string) {
+  const data = await prisma.post.findFirst({
+    where: {
+      materiaId: materiaID,
+    },
+  });
+  return data;
+ }
+
 export async function deleteRecord(id: string, model: string) {
   switch (model) {
     case "Matérias":
