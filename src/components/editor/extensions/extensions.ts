@@ -10,6 +10,10 @@ import {
   AIHighlight,
   Youtube,
   Twitter,
+  TiptapUnderline,
+  Color,
+  TextStyle,
+  HighlightExtension,
 } from "novel/extensions";
 import { UploadImagesPlugin } from "novel/plugins";
 
@@ -132,5 +136,11 @@ export const defaultExtensions = [
   horizontalRule,
   aiHighlight,
   youtube,
-  twitter
+  twitter,
+  TiptapUnderline,
+  Color,
+  TextStyle,
+  HighlightExtension.configure({
+    multicolor: true,
+  }),
 ];

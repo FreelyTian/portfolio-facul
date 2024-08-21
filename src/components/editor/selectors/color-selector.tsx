@@ -138,13 +138,11 @@ export const ColorSelector = ({ open, onOpenChange }: ColorSelectorProps) => {
             <EditorBubbleItem
               key={index}
               onSelect={() => {
-                editor.commands.unsetColor();
-                name !== "Default" &&
-                  editor
-                    .chain()
-                    .focus()
-                    .setColor(color || "")
-                    .run();
+                if (name === "Default") {
+                  editor.commands.unsetColor();
+                } else {
+                  editor.chain().focus().setColor(color).run();
+                }
                 onOpenChange(false);
               }}
               className="flex cursor-pointer items-center justify-between px-2 py-1 text-sm hover:bg-accent"
