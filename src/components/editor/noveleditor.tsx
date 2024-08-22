@@ -38,7 +38,7 @@ const Editor = ({ initialValue, onChange }: EditorProp) => {
   return (
     <EditorRoot>
       <EditorContent
-        className="border p-4 rounded-xl w-full"
+        className="h-full w-full"
         {...(initialValue && { initialContent: initialValue })}
         extensions={extensions}
         editorProps={{
@@ -53,7 +53,7 @@ const Editor = ({ initialValue, onChange }: EditorProp) => {
             class: `prose prose-lg dark:prose-invert prose-headings:font-title font-default focus:outline-none max-w-full`,
           },
         }}
-        onUpdate={({ editor }) => { 
+        onUpdate={({ editor }) => {
           onChange(editor);
         }}
         slotAfter={<ImageResizer />}
