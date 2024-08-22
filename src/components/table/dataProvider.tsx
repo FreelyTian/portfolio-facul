@@ -16,28 +16,43 @@ export async function getDataP() {
 
 export async function createPost(data: {
   title: string;
-  content: string;
+  content: string | undefined;
   materiaId: string;
 }) {
-  await prisma.post.create({
-    data: {
-      title: data.title,
-      content: data.content,
-      materiaId: data.materiaId,
-    },
-  });
+  const exists = await getPost(data.materiaId);
+  if (exists == null) {
+    await prisma.post.create({
+      data: {
+        title: data.title,
+        content: data.content!,
+        materiaId: data.materiaId,
+      },
+    });
+  } else {
+    await prisma.post.update({
+      where: {
+        id: exists.id,
+      },
+      data: {
+        title: data.title,
+        content: data.content,
+      },
+    });
+  }
   console.log("Post criado");
   revalidatePath("/admin/Posts");
 }
 
 export async function getPost(materiaID: string) {
+  console.log(materiaID);
   const data = await prisma.post.findFirst({
     where: {
       materiaId: materiaID,
     },
   });
+  console.log(data);
   return data;
- }
+}
 
 export async function deleteRecord(id: string, model: string) {
   switch (model) {
