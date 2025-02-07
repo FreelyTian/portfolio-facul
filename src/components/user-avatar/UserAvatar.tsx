@@ -8,13 +8,14 @@ export async function UserAvatar() {
 
   return (
     <div className="flex flex-row items-center">
-        
       <img
-        className="h-12 rounded-full p-1"
-        src={session.user.image as string}
-        alt={"Foto do User"}
+      className="h-12 rounded-full p-1"
+      src={session.user.image as string}
+      alt={session.user.name?.split(" ").map((n) => n[0]).join("")}
       />
       <h2>{session.user.name}</h2>
+
+
     </div>
   );
 }
