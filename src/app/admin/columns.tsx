@@ -41,6 +41,11 @@ export type Materia = {
   id: string;
   name: string;
   periodo: string;
+  professor: string;
+  dayTime: string;
+  dayOfWeek: string;
+  bloco: string;
+  sala: string;
   createdAt: Date;
   updatedAt: Date;
 };
@@ -65,20 +70,16 @@ export const columnsM: ColumnDef<Materia>[] = [
     header: "Período",
   },
   {
-    accessorKey: "createdAt",
-    cell: (props: any) =>
-      props.getValue().toLocaleDateString() +
-      " às " +
-      props.getValue().toLocaleTimeString().slice(0, 5),
-    header: "Criada em:",
+    accessorKey: "professor",
+    header: "Professor",
   },
   {
-    accessorKey: "updatedAt",
-    cell: (props: any) =>
-      props.getValue().toLocaleDateString() +
-      " às " +
-      props.getValue().toLocaleTimeString().slice(0, 5),
-    header: "Atualizada em:",
+    accessorKey: "dayOfWeek",
+    header: "Dia da semana",
+  },
+  {
+    accessorKey: "sala",
+    header: "Sala",
   },
   {
     id: "actions",
@@ -92,36 +93,48 @@ export const columnsM: ColumnDef<Materia>[] = [
         <div className="flex gap-2">
           <Popover>
             <PopoverTrigger asChild className="flex flex-row gap-1">
-              <Button className=" w-full bg-slate-600">
+              <Button className=" w-full bg-slate-600 animate-in hover:scale-105 ease-in-out duration-1000">
                 <Edit className="p-1"></Edit>
                 Edit
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-[32rem] backdrop-blur-lg shadow-lg">
+            <PopoverContent className="w-[30rem]  backdrop-blur-lg shadow-lg">
               <form
                 action={async (formData) => {
                   await editRegister(record, formData);
                   ref.current?.reset();
                 }}
-                className="w-full flex items-center flex-row gap-2"
+                className="w-full flex items-center flex-col gap-2"
               >
+                <h2 className="text-2xl text-center pb-2">
+                  Editando <br /> {record.name}
+                </h2>
                 <Input
-                  className="w-full"
+                  className="w-full focus-visible:ring-transparent focus:mx-2 focus:border-blue-300 focus:scale-[102%] animate-in ease-in-out duration-500"
                   type="text"
                   name="materianame"
                   placeholder="Nome da matéria"
                   defaultValue={record.name}
                 ></Input>
-                <Input
-                  className="w-20"
-                  type="text"
-                  name="materiaperiodo"
-                  placeholder="Período"
-                  defaultValue={record.periodo}
-                ></Input>
+                <div className="flex flex-row w-full gap-2">
+                  <Input
+                    className="w-80 focus-visible:ring-transparent focus:mr-1 focus:border-blue-300 focus:scale-105 animate-in ease-in-out duration-500"
+                    type="text"
+                    name="materiaprofessor"
+                    placeholder="Professor"
+                    defaultValue={record.professor}
+                  ></Input>
+                  <Input
+                    className="w-32 focus-visible:ring-transparent focus:ml-1 focus:border-blue-300 focus:scale-105 animate-in ease-in-out duration-500"
+                    type="text"
+                    name="materiaperiodo"
+                    placeholder="Período"
+                    defaultValue={record.periodo}
+                  ></Input>
+                </div>
                 <Button
                   variant={"default"}
-                  className="w-10 p-1 hover:bg-green-300"
+                  className="w-10 p-1 hover:bg-green-600"
                 >
                   <Check className="h-16 w-16 p-0"></Check>
                 </Button>
@@ -129,6 +142,7 @@ export const columnsM: ColumnDef<Materia>[] = [
             </PopoverContent>
           </Popover>
           <Button
+            className="animate-in hover:scale-105 ease-in-out duration-1000"
             variant={"destructive"}
             onClick={() => {
               deleteRecord(record.id, "Matérias");
