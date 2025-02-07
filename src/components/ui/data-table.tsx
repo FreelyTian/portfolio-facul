@@ -85,7 +85,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="w-full ">
-      <div className="rounded-md shadow-lg min-w-[800px] border overflow-hidden">
+      <div className="rounded-md animate-in ease-in-out duration-700 slide-in-from-bottom-5 fade-in-10 shadow-lg min-w-[800px] border overflow-hidden">
         <Table>
           <TableHeader className="bg-primary -inset-2 border-2 border-primary ">
             {table.getHeaderGroups().map((headerGroup) => {
