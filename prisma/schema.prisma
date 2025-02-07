@@ -24,6 +24,11 @@ model Materia {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt @default(now())
   periodo   String   @default("2022/1")
+  professor String
+  dayOfWeek String   @default("segunda")
+  dayPeriod String   @default("noite")
+  bloco     String   @default("I")
+  sala      String   @default("Fábrica de Software")
   posts     Post[]
 }
 
