@@ -11,10 +11,22 @@ export async function logButtonClick() {
 
 export async function addMateriaButton(matName: FormData) {
   revalidatePath("/admin/Matérias");
-  var rawData = matName.get("materia");
+  var materia = matName.get("materia");
+  var professor = matName.get("professor");
+  var periodo = matName.get("periodo");
+  var dayTime = matName.get("dayTime");
+  var dayOfWeek = matName.get("dayOfWeek");
+  var bloco = matName.get("block");
+  var sala = matName.get("sala");
   await prisma.materia.create({
     data: {
-      name: rawData as string,
+      name: materia as string,
+      professor: professor as string,
+      periodo: periodo as string,
+      dayOfWeek: dayOfWeek as string,
+      bloco: bloco as string,
+      dayPeriod: dayTime as string,
+      sala: sala as string,
     },
   });
 }
@@ -25,10 +37,14 @@ export async function editRegister(materia: Materia, updateData: FormData) {
   await prisma.materia.update({
     where: {
       id: id,
+      name: materia.name,
+      professor: materia.professor,
+      periodo: materia.periodo,
     },
     data: {
       name: updateData.get("materianame") as string,
       periodo: updateData.get("materiaperiodo") as string,
+      professor: updateData.get("materiaprofessor") as string,
     },
   });
 }
