@@ -57,10 +57,13 @@ export function ModelForm({ model }: { model: string }) {
               </SelectContent>
             </Select>
           </div>
+          <Button type="submit" variant="default">
+            Adicionar Matéria
+          </Button>
         </div>
         <div className="flex flex-col gap-2">
           <Input
-            className="w-[30.9rem]"
+            className="w-6/6"
             id="professor_input"
             type="text"
             name="professor"
@@ -69,24 +72,27 @@ export function ModelForm({ model }: { model: string }) {
           <div className="flex flex-row flex-nowrap gap-2">
             <Input
               className="w-2/6"
-              id="periodo_input"
+              id="sala_input"
               type="text"
-              name="periodo"
-              placeholder="Período..."
+              name="sala"
+              placeholder="Sala..."
             ></Input>
             <Select name="block">
               <SelectTrigger className="w-2/6">
                 <SelectValue placeholder="Bloco" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="manha">Manhã</SelectItem>
-                <SelectItem value="tarde">Tarde</SelectItem>
-                <SelectItem value="noite">Noite</SelectItem>
+                <SelectItem value="I">I</SelectItem>
+                <SelectItem value="II">II</SelectItem>
               </SelectContent>
             </Select>
-            <Button type="submit" variant="default">
-              Adicionar Matéria
-            </Button>
+            <Input
+              className="w-2/6"
+              id="periodo_input"
+              type="text"
+              name="periodo"
+              placeholder="Período..."
+            ></Input>
           </div>
         </div>
       </form>
