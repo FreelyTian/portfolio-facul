@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { ModelForm } from "@/components/form/modelsForm";
 import Link from "next/link";
 import { revalidatePath } from "next/cache";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 export default async function Admin({ params }: { params: { model: string } }) {
   const model = decodeURI(params.model) as string;
@@ -30,7 +31,9 @@ export default async function Admin({ params }: { params: { model: string } }) {
         <SideBar />
         <div className="flex gap-2 flex-col justify-start ml-3.5 p-2">
           <div className="flex flex-row justify-between">
-            <h1 className="text-4xl">{model}</h1>
+            <h1 className="text-4xl animate-in ease-in-out duration-700 slide-in-from-bottom-4 fade-in-5">
+              {model}
+            </h1>
             {model == "Posts"
               ? (() => {
                   return (
@@ -55,6 +58,53 @@ export default async function Admin({ params }: { params: { model: string } }) {
                 return <div></div>;
               })()}
         </div>
+        {model == "Matérias" && (
+          <div className="p-2 flex flex-col gap-2 w-3/12">
+            <h2 className="animate-in ease-in-out duration-700 slide-in-from-bottom-5 text-4xl fade-in-5">
+              Dias da Semana
+            </h2>
+            <Card className="w-full p-2 shadow-md animate-in ease-in-out duration-700 slide-in-from-bottom-6 fade-in-10">
+              <CardHeader>
+                Semana
+                <hr />
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-row justify-evenly w-full text-xs">
+                  {[
+                    "Segunda",
+                    "Terça  ",
+                    "Quarta ",
+                    "Quinta ",
+                    "Sexta  ",
+                    "Sábado ",
+                    "Domingo",
+                  ].map((dia, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className="flex flex-col gap-1 text-center items-center"
+                      >
+                        <p>{dia}</p>
+                        <div
+                          key={dia}
+                          className="bg-blue-400 rounded-md h-11 w-11"
+                        ></div>
+                        <div
+                          key={dia}
+                          className="bg-blue-400 rounded-md h-11 w-11"
+                        ></div>
+                        <div
+                          key={dia}
+                          className="bg-blue-400 rounded-md h-11 w-11"
+                        ></div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
       </div>
     </>
   );
